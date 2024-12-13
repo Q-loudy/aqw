@@ -14,9 +14,9 @@
 
   <br><br>
 
-  <!-- Dropdown Menu for Enhancement Type -->
-  <label for="enhancement">Class Model</label>
-  <select id="enhancement">
+  <!-- Dropdown Menu for Class Model -->
+  <label for="classModel">Class Model</label>
+  <select id="classModel">
     <option value="Tank Melee">Tank Melee</option>
     <option value="Dodge Melee">Dodge Melee</option>
     <option value="Power Melee">Power Melee</option>
@@ -31,6 +31,7 @@
 
   <!-- Display the dynamic result -->
   <div id="showWDPS"></div>
+  <div id="showPrimaryStats"></div>
 
   <!-- Link to the External JavaScript file -->
   <script src="statcalc.js"></script>
@@ -41,7 +42,7 @@
     function updateStats() {
       // Get the level and selected enhancement type
       const level = document.getElementById("level").value;
-      const selectedEnhancement = document.getElementById("enhancement").value;
+      const classModel = document.getElementById("classModel").value;
 
       // Validate level input
       if (level <= 0 || isNaN(level)) {
@@ -49,19 +50,28 @@
         return;
       }
 
-      // Perform the enhancement calculation using the external function
-      const calculatedStat = calculateEnhancement(level, selectedEnhancement);
-
+      // stat calculations
       const WDPS = getWDPS(level);
+      const primaryStats = getPrimaryStats(level, classModel);
       
       // Display the result
-      document.getElementById("result").innerHTML = `Your calculated stat is: ${calculatedStat} (Level: ${level}, Enhancement: ${selectedEnhancement})`;
       document.getElementById("showWDPS").innerHTML = `WDPS: ${WDPS}`;
+      document.getElementById("showPrimaryStats").innerHTML = `
+        <h3 style="color: blue;">Primary Stats:</h3>
+        <ul style="font-family: Arial, sans-serif;">
+          <li><strong>Strength:</strong> ${strength}</li>
+          <li><strong>Intellect:</strong> ${intellect}</li>
+          <li><strong>Endurance:</strong> ${endurance}</li>
+          <li><strong>Dexterity:</strong> ${dexterity}</li>
+          <li><strong>Wisdom:</strong> ${wisdom}</li>
+          <li><strong>Luck:</strong> ${luck}</li>
+        </ul>
+      `;
     }
 
     // Attach event listeners to inputs
     document.getElementById("level").addEventListener("input", updateStats);
-    document.getElementById("enhancement").addEventListener("change", updateStats);
+    document.getElementById("classModel").addEventListener("change", updateStats);
   </script>
 </body>
 </html>
