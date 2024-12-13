@@ -110,6 +110,8 @@ function getBasePrimaryStats(level, classModel) {
         break;
   }
 
+  return basePrimaryStats;
+
   // Return the calculated stats
   return {
       strength: strength,
