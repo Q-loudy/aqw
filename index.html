@@ -29,13 +29,12 @@
 
   <br><br>
 
-  <label for="test">testing1234</label>
+  <label for="test">testing123</label>
 
   
   <!-- Display the dynamic result -->
   <div id="showWDPS"></div>
   <div id="showPrimaryStats"></div>
-  <div id="result"></div>
 
   <!-- Link to the External JavaScript file -->
   <script src="statcalc.js"></script>
@@ -57,6 +56,15 @@
       // stat calculations
       const WDPS = getWDPS(level);
       const primaryStats = getBasePrimaryStats(level, classModel);
+
+      // Rounding before display
+      WDPS = Math.round(WDPS);
+      
+      for (let key in primaryStats) {
+      if (primaryStats.hasOwnProperty(key)) {
+          primaryStats[key] = Math.round(primaryStats[key]); 
+        }
+      }
       
       // Display the result
       document.getElementById("showWDPS").innerHTML = `WDPS: ${WDPS}`;
