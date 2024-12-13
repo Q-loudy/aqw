@@ -111,14 +111,4 @@ function getBasePrimaryStats(level, classModel) {
   }
 
   return basePrimaryStats;
-
-  // Return the calculated stats
-  return {
-      strength: strength,
-      intellect: intellect,
-      endurance: endurance,
-      dexterity: dexterity,
-      wisdom: wisdom,
-      luck: luck
-  };
 }
