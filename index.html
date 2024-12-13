@@ -29,7 +29,7 @@
 
   <br><br>
 
-  <label for="test">testing123</label>
+  <label for="test">testing1234</label>
 
   
   <!-- Display the dynamic result -->
@@ -56,11 +56,21 @@
 
       // stat calculations
       const WDPS = getWDPS(level);
-      //const primaryStats = getBasePrimaryStats(level, classModel);
+      const primaryStats = getBasePrimaryStats(level, classModel);
       
       // Display the result
       document.getElementById("showWDPS").innerHTML = `WDPS: ${WDPS}`;
-      
+      document.getElementById("showPrimaryStats").innerHTML = `
+        <h3 style="color: blue;">Primary Stats:</h3>
+        <ul style="font-family: Arial, sans-serif;">
+          <li><strong>Strength:</strong> ${primaryStats.strength}</li>
+          <li><strong>Intellect:</strong> ${primaryStats.intellect}</li>
+          <li><strong>Endurance:</strong> ${primaryStats.endurance}</li>
+          <li><strong>Dexterity:</strong> ${primaryStats.dexterity}</li>
+          <li><strong>Wisdom:</strong> ${primaryStats.wisdom}</li>
+          <li><strong>Luck:</strong> ${primaryStats.luck}</li>
+        </ul>
+      `;      
     }
 
     // Attach event listeners to inputs
