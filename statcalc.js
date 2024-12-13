@@ -96,7 +96,7 @@ function getBasePrimaryStats(level, classModel) {
         basePrimaryStats.luck += baseStats * 0.05;
         break;
 
-    case 'basePrimaryStats.luck Hybrid':
+    case 'Luck Hybrid':
         basePrimaryStats.strength += baseStats * 0.22;
         basePrimaryStats.intellect += baseStats * 0.08;
         basePrimaryStats.endurance += baseStats * 0.18;
