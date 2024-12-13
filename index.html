@@ -7,8 +7,8 @@
 </head>
 <body>
   <h1>Welcome to the Stat Calculator</h1>
-  
-  <!-- Level Input Form -->
+
+  <!-- Level Input Field -->
   <form id="levelForm">
     <label for="level">Enter your level:</label>
     <input 
@@ -19,7 +19,6 @@
       max="100" 
       placeholder="e.g., 50"
     >
-    <button type="button" onclick="submitLevel()">Submit</button>
   </form>
 
   <!-- To display the result -->
@@ -27,8 +26,8 @@
 
   <!-- JavaScript -->
   <script>
-    function submitLevel() {
-      // Get the input value
+    // Function to dynamically display the level
+    function updateLevelDisplay() {
       const level = document.getElementById("level").value;
 
       // Validate the input
@@ -38,6 +37,9 @@
         document.getElementById("levelResult").innerHTML = `You entered level: ${level}`;
       }
     }
+
+    // Attach an event listener to the input field
+    document.getElementById("level").addEventListener("input", updateLevelDisplay);
   </script>
 </body>
 </html>
