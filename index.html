@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My GitHub Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stat Calculator</title>
 </head>
 <body>
-    <h1>Welcome to My GitHub Page!</h1>
-    <p>This is a basic GitHub Pages website.</p>
+  <h1>Welcome to the Stat Calculator</h1>
+  
+  <!-- Level Input Form -->
+  <form id="levelForm">
+    <label for="level">Enter your level:</label>
+    <input 
+      type="number" 
+      id="level" 
+      name="level" 
+      min="1" 
+      max="100" 
+      placeholder="e.g., 50"
+    >
+    <button type="button" onclick="submitLevel()">Submit</button>
+  </form>
+
+  <!-- To display the result -->
+  <div id="levelResult"></div>
+
+  <!-- JavaScript -->
+  <script>
+    function submitLevel() {
+      // Get the input value
+      const level = document.getElementById("level").value;
+
+      // Validate the input
+      if (!level || level < 1 || level > 100) {
+        document.getElementById("levelResult").innerHTML = "Please enter a level between 1 and 100.";
+      } else {
+        document.getElementById("levelResult").innerHTML = `You entered level: ${level}`;
+      }
+    }
+  </script>
 </body>
 </html>
