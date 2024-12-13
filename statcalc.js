@@ -1,5 +1,12 @@
 // statcalc.js
 
+function getBaseHP (level)  {
+  let baseHP = ((level - 1) / (100 - 1)) ** 0.66 * 1640 + 360;
+  return baseHP;
+}  
+
+
+
 function calculateEnhancement(level, selectedEnhancement) {
   let calculatedStat = level * 10; // Basic calculation for level
 
