@@ -3,43 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stat Calculator</title>
+  <title>Stat Calculator with Level and Dropdown</title>
 </head>
 <body>
-  <h1>Welcome to the Stat Calculator</h1>
+  <h1>Stat Calculator</h1>
 
-  <!-- Level Input Field -->
-  <form id="levelForm">
-    <label for="level">Enter your level:</label>
-    <input 
-      type="number" 
-      id="level" 
-      name="level" 
-      min="1" 
-      max="100" 
-      placeholder="e.g., 50"
-    >
-  </form>
+  <!-- Level Input -->
+  <label for="level">Enter your level:</label>
+  <input type="number" id="level" placeholder="Enter your level" />
 
-  <!-- To display the result -->
-  <div id="levelResult"></div>
+  <br><br>
+
+  <!-- Dropdown Menu for Enhancement Type -->
+  <label for="enhancement">Choose an enhancement type:</label>
+  <select id="enhancement">
+    <option value="Lucky">Lucky</option>
+    <option value="Fighter">Fighter</option>
+    <option value="Wizard">Wizard</option>
+    <option value="Healer">Healer</option>
+    <option value="Thief">Thief</option>
+  </select>
+
+  <br><br>
+
+  <!-- Display the dynamic result -->
+  <div id="result"></div>
 
   <!-- JavaScript -->
   <script>
-    // Function to dynamically display the level
-    function updateLevelDisplay() {
+    // Function to update the result dynamically
+    function updateStats() {
+      // Get the level and selected enhancement type
       const level = document.getElementById("level").value;
+      const selectedEnhancement = document.getElementById("enhancement").value;
 
-      // Validate the input
-      if (!level || level < 1 || level > 100) {
-        document.getElementById("levelResult").innerHTML = "Please enter a level between 1 and 100.";
-      } else {
-        document.getElementById("levelResult").innerHTML = `You entered level: ${level}`;
+      // Validate level input
+      if (level <= 0 || isNaN(level)) {
+        document.getElementById("result").innerHTML = "Please enter a valid level.";
+        return;
       }
+
+      // Perform calculation (you can adjust the formula as needed)
+      let calculatedStat = level * 10; // Just an example calculation based on the level
+
+      // Modify stat based on the selected enhancement type
+      switch (selectedEnhancement) {
+        case 'Lucky':
+          calculatedStat += 5;
+          break;
+        case 'Fighter':
+          calculatedStat += 10;
+          break;
+        case 'Wizard':
+          calculatedStat += 7;
+          break;
+        case 'Healer':
+          calculatedStat += 3;
+          break;
+        case 'Thief':
+          calculatedStat += 8;
+          break;
+        default:
+          break;
+      }
+
+      // Display the result
+      document.getElementById("result").innerHTML = `Your calculated stat is: ${calculatedStat} (Level: ${level}, Enhancement: ${selectedEnhancement})`;
     }
 
-    // Attach an event listener to the input field
-    document.getElementById("level").addEventListener("input", updateLevelDisplay);
+    // Attach event listeners to inputs
+    document.getElementById("level").addEventListener("input", updateStats);
+    document.getElementById("enhancement").addEventListener("change", updateStats);
   </script>
 </body>
 </html>
