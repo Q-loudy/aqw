@@ -9,19 +9,22 @@
   <h1>Stat Calculator</h1>
 
   <!-- Level Input -->
-  <label for="level">Enter your level:</label>
+  <label for="level">Level</label>
   <input type="number" id="level" placeholder="Enter your level" />
 
   <br><br>
 
   <!-- Dropdown Menu for Enhancement Type -->
-  <label for="enhancement">Choose an enhancement type:</label>
+  <label for="enhancement">Class Model</label>
   <select id="enhancement">
-    <option value="Lucky">Lucky</option>
-    <option value="Fighter">Fighter</option>
-    <option value="Wizard">Wizard</option>
-    <option value="Healer">Healer</option>
-    <option value="Thief">Thief</option>
+    <option value="Tank Melee">Tank Melee</option>
+    <option value="Dodge Melee">Dodge Melee</option>
+    <option value="Power Melee">Power Melee</option>
+    <option value="Offensive Caster">Offensive Caster</option>
+    <option value="Defensive Caster">Defensive Caster</option>
+    <option value="Power Caster">Power Caster</option>
+    <option value="Full Hybrid">Full Hybrid</option>
+    <option value="Luck Hybrid">Luck Hybrid</option>
   </select>
 
   <br><br>
@@ -29,7 +32,10 @@
   <!-- Display the dynamic result -->
   <div id="result"></div>
 
-  <!-- JavaScript -->
+  <!-- Link to the External JavaScript file -->
+  <script src="statcalc.js"></script>
+
+  <!-- JavaScript to Update the Stats Dynamically -->
   <script>
     // Function to update the result dynamically
     function updateStats() {
@@ -43,29 +49,8 @@
         return;
       }
 
-      // Perform calculation (you can adjust the formula as needed)
-      let calculatedStat = level * 10; // Just an example calculation based on the level
-
-      // Modify stat based on the selected enhancement type
-      switch (selectedEnhancement) {
-        case 'Lucky':
-          calculatedStat += 5;
-          break;
-        case 'Fighter':
-          calculatedStat += 10;
-          break;
-        case 'Wizard':
-          calculatedStat += 7;
-          break;
-        case 'Healer':
-          calculatedStat += 3;
-          break;
-        case 'Thief':
-          calculatedStat += 8;
-          break;
-        default:
-          break;
-      }
+      // Perform the enhancement calculation using the external function
+      const calculatedStat = calculateEnhancement(level, selectedEnhancement);
 
       // Display the result
       document.getElementById("result").innerHTML = `Your calculated stat is: ${calculatedStat} (Level: ${level}, Enhancement: ${selectedEnhancement})`;
