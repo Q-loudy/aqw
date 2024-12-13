@@ -5,7 +5,15 @@ function getBaseHP (level)  {
   return baseHP;
 }  
 
+function getWDPS (level) {
+  let WDPS = getBaseHP(level)/20*0.85;
+  return WDPS;
+}
 
+function getEfficiency (level) {
+  let efficiency = 16000/63/getBaseHP(level);
+  return efficiency;
+}
 
 function calculateEnhancement(level, selectedEnhancement) {
   let calculatedStat = level * 10; // Basic calculation for level
