@@ -1,4 +1,4 @@
-// enhancement.js
+// statcalc.js
 
 function calculateEnhancement(level, selectedEnhancement) {
   let calculatedStat = level * 10; // Basic calculation for level
