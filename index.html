@@ -31,7 +31,7 @@
 
   <!-- Display the dynamic result -->
   <div id="result"></div>
-  <div id="baseHP"></div>
+  <div id="showWDPS"></div>
 
   <!-- Link to the External JavaScript file -->
   <script src="statcalc.js"></script>
@@ -53,11 +53,11 @@
       // Perform the enhancement calculation using the external function
       const calculatedStat = calculateEnhancement(level, selectedEnhancement);
 
-      const baseHP = getBaseHP(level);
+      const WDPS = getWDPS(level);
       
       // Display the result
       document.getElementById("result").innerHTML = `Your calculated stat is: ${calculatedStat} (Level: ${level}, Enhancement: ${selectedEnhancement})`;
-      document.getElementById("baseHP").innerHTML = `Base HP: ${baseHP}`;
+      document.getElementById("showWDPS").innerHTML = `WDPS: ${WDPS}`;
     }
 
     // Attach event listeners to inputs
