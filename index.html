@@ -8,7 +8,7 @@
 <body>
   <h1>Stat Calculator</h1>
 
-  <label for="test">testing11243</label>
+  <label for="test">testing243</label>
   <br><br>
   
   <!-- Level Input -->
@@ -35,7 +35,7 @@
 
   <!-- Enhancement types and levels -->  
   <label>Weapon:</label>
-      <select id="wepEnh">
+      <select id="weaponEnh">
         <option value="Lucky">Lucky</option>
         <option value="Wizard">Wizard</option>
         <option value="Forge">Forge</option>
@@ -46,7 +46,7 @@
         <option value="Spellbreaker">Spellbreaker</option>
         <option value="Hybrid">Hybrid</option>
       </select>
-      <input type="number" id="wepEnhLvl" placeholder="Enh Lvl" />
+      <input type="number" id="weaponEnhLvl" placeholder="Enh Lvl" />
   <br>
     <label>Armor:</label>
       <select id="armorEnh">
@@ -104,10 +104,21 @@
   <script>
     // Function to update the result dynamically
     function updateStats() {
-      // Get the level and selected enhancement type
+      // Get the level and selected class model 
       const level = document.getElementById("level").value;
       const classModel = document.getElementById("classModel").value;
 
+      // Get enhancement types and levels
+      const weaponEnh = document.getElementById("weaponEnh").value;
+      const armorEnh = document.getElementById("armorEnh").value;
+      const helmEnh = document.getElementById("helmEnh").value;
+      const capeEnh = document.getElementById("capeEnh").value;
+
+      const weaponEnhLvl = document.getElementById("weaponEnhLvl").value;
+      const armorEnhLvl = document.getElementById("armorEnhLvl").value;
+      const helmEnhLvl = document.getElementById("helmEnhLvl").value;
+      const capeEnhLvl = document.getElementById("capeEnhLvl").value;
+      
       // Validate level input
       if (level <= 0 || isNaN(level)) {
         document.getElementById("result").innerHTML = "Please enter a valid level.";
@@ -141,13 +152,26 @@
           <li><strong>Wisdom:</strong> ${primaryStats.wisdom}</li>
           <li><strong>Luck:</strong> ${primaryStats.luck}</li>
         </ul>
-      `;      
+      `;     
+      document.getElementById("showWDPS").innerHTML = `Wep Enh: ${weaponEnh}`;
+      
     }
 
     // Attach event listeners to inputs
     updateStats();
     document.getElementById("level").addEventListener("input", updateStats);
     document.getElementById("classModel").addEventListener("change", updateStats);
+    
+    document.getElementById("weaponEnh").addEventListener("change", updateStats);
+    document.getElementById("armorEnh").addEventListener("change", updateStats);
+    document.getElementById("helmEnh").addEventListener("change", updateStats);
+    document.getElementById("capeEnh").addEventListener("change", updateStats);
+
+    document.getElementById("weaponEnhLvl").addEventListener("change", updateStats);
+    document.getElementById("armorEnhLvl").addEventListener("change", updateStats);
+    document.getElementById("helmEnhLvl").addEventListener("change", updateStats);
+    document.getElementById("capeEnhLvl").addEventListener("change", updateStats);
+    
   </script>
 </body>
 </html>
