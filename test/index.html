@@ -1,22 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Arrangement</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-
-<div class="field-container">
-  <!-- Input field -->
-  <label for="level">Level</label>
-  <input type="number" id="level" class="input-field" placeholder="Enter your level">
-
-  <!-- Dropdown field -->
-  <label for="classModel">Class Model</label>
-  <select id="classModel" class="dropdown-field">
-    <option value="Tank Melee">Tank Melee</option>
-    <option value="Dodge Melee">Dodge Melee</option>
-    <option value="Power Melee">Power Melee</option>
-    <option value="Offensive Caster">Offensive Caster</option>
-    <option value="Defensive Caster">Defensive Caster</option>
-    <option value="Power Caster">Power Caster</option>
-    <option value="Full Hybrid">Full Hybrid</option>
-    <option value="Luck Hybrid">Luck Hybrid</option>
-  </select>
-</div>
+<body>
+  <h1>Field Arrangement Example</h1>
+  
+  <div class="field-container">
+    <!-- Column 1 -->
+    <div class="column">
+      <label for="level">Level</label>
+      <input type="number" id="level" placeholder="Enter your level" />
+      
+      <label for="classModel">Class Model</label>
+      <select id="classModel">
+        <option value="Tank Melee">Tank Melee</option>
+        <option value="Dodge Melee">Dodge Melee</option>
+        <option value="Power Melee">Power Melee</option>
+        <option value="Offensive Caster">Offensive Caster</option>
+        <option value="Defensive Caster">Defensive Caster</option>
+        <option value="Power Caster">Power Caster</option>
+        <option value="Full Hybrid">Full Hybrid</option>
+        <option value="Luck Hybrid">Luck Hybrid</option>
+      </select>
+    </div>
+    
+    <!-- Column 2 -->
+    <div class="column">
+      <label>Enhancement</label>
+      <select>
+        <option value="Lucky">Lucky</option>
+        <option value="Fighter">Fighter</option>
+        <option value="Wizard">Wizard</option>
+        <option value="Healer">Healer</option>
+      </select>
+      <select>
+        <option value="Lucky">Lucky</option>
+        <option value="Fighter">Fighter</option>
+        <option value="Wizard">Wizard</option>
+        <option value="Healer">Healer</option>
+      </select>
+      <select>
+        <option value="Lucky">Lucky</option>
+        <option value="Fighter">Fighter</option>
+        <option value="Wizard">Wizard</option>
+        <option value="Healer">Healer</option>
+      </select>
+      <select>
+        <option value="Lucky">Lucky</option>
+        <option value="Fighter">Fighter</option>
+        <option value="Wizard">Wizard</option>
+        <option value="Healer">Healer</option>
+      </select>
+    </div>
+    
+    <!-- Column 3 -->
+    <div class="column">
+      <label>Enhancement Level</label>
+      <input type="number" value="100" />
+      <input type="number" value="100" />
+      <input type="number" value="100" />
+      <input type="number" value="100" />
+    </div>
+    
+    <!-- Column 4 -->
+    <div class="column">
+      <label>Enhancement Modifier</label>
+      <input type="number" value="5" />
+      <input type="number" value="5" />
+      <input type="number" value="5" />
+      <input type="number" value="5" />
+    </div>
+  </div>
+</body>
+</html>
