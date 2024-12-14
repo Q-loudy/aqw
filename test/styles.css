@@ -1,7 +1,7 @@
 /* Container for all columns */
 .container {
   display: flex;
-  gap: 10px; /* Space between columns */
+  gap: 20px; /* Space between columns */
   justify-content: space-between;
 }
 
@@ -16,11 +16,17 @@
 .row {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between label and input */
+  gap: 10px; /* Space between elements in a row */
 }
 
 /* Ensure labels have consistent width for alignment */
 .row label {
-  width: 120px;
+  width: 100px;
   text-align: right;
+}
+
+/* Make inputs and dropdowns a consistent width */
+.row select,
+.row input {
+  width: 120px;
 }
