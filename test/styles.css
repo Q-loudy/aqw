@@ -1,0 +1,12 @@
+.field-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-field {
+  margin-right: 10px;
+}
+
+.dropdown-field {
+  margin-left: 10px;
+}
