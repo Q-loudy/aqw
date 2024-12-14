@@ -1,19 +1,26 @@
-/* Style the container for the column */
+/* Container for all columns */
+.container {
+  display: flex;
+  gap: 20px; /* Space between columns */
+  justify-content: space-between;
+}
+
+/* Style for each column */
 .column {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Add spacing between rows */
+  gap: 10px; /* Space between rows */
 }
 
-/* Style each row */
+/* Align labels and fields in each row */
 .row {
   display: flex;
-  align-items: center; /* Align label and dropdown vertically */
+  align-items: center;
+  gap: 10px; /* Space between label and input */
 }
 
-/* Ensure labels have consistent spacing */
+/* Ensure labels have consistent width for alignment */
 .row label {
-  margin-right: 10px; /* Space between label and dropdown */
-  width: 80px; /* Fixed width for labels for consistent alignment */
-  text-align: right; /* Right-align the text */
+  width: 120px;
+  text-align: right;
 }
