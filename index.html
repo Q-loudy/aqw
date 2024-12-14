@@ -8,7 +8,7 @@
 <body>
   <h1>Stat Calculator</h1>
 
-  <label for="test">testing12</label>
+  <label for="test">testing123</label>
   <br><br>
   
   <!-- Level Input -->
@@ -99,6 +99,7 @@
   <!-- Display the dynamic result -->
   <div id="showWDPS"></div>
   <div id="showPrimaryStats"></div>
+  <div id="showWeaponEnh"></div>
 
   <!-- Link to the External JavaScript file -->
   <script src="statcalc.js"></script>
@@ -194,6 +195,11 @@
     document.getElementById("armorEnhLvl").addEventListener("change", updateStats);
     document.getElementById("helmEnhLvl").addEventListener("change", updateStats);
     document.getElementById("capeEnhLvl").addEventListener("change", updateStats);
+
+    document.getElementById("weaponModLvl").addEventListener("change", updateStats);
+    document.getElementById("armorModLvl").addEventListener("change", updateStats);
+    document.getElementById("helmModLvl").addEventListener("change", updateStats);
+    document.getElementById("capeModLvl").addEventListener("change", updateStats);
     
   </script>
 </body>
