@@ -15,7 +15,7 @@
 /* Align labels and fields in each row */
 .row {
   display: flex;
-  align-items: center;
+  align-items: right;
   gap: 10px; /* Space between elements in a row */
 }
 
