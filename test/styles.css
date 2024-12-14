@@ -1,7 +1,7 @@
 /* Container for all columns */
 .container {
   display: flex;
-  gap: 20px; /* Space between columns */
+  gap: 10px; /* Space between columns */
   justify-content: space-between;
 }
 
