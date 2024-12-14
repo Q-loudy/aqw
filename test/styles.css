@@ -10,12 +10,13 @@
   display: flex;
   flex-direction: column;
   gap: 10px; /* Space between rows */
+  align-items: flex-end; /* Align rows to the right */
 }
 
 /* Align labels and fields in each row */
 .row {
   display: flex;
-  align-items: right;
+  align-items: center;
   gap: 10px; /* Space between elements in a row */
 }
 
