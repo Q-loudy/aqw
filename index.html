@@ -8,7 +8,7 @@
 <body>
   <h1>Stat Calculator</h1>
 
-  <label for="test">testing243</label>
+  <label for="test">testing24</label>
   <br><br>
   
   <!-- Level Input -->
@@ -46,7 +46,8 @@
         <option value="Spellbreaker">Spellbreaker</option>
         <option value="Hybrid">Hybrid</option>
       </select>
-      <input type="number" id="weaponEnhLvl" placeholder="Enh Lvl" />
+      <input type="number" id="weaponEnhLvl" value="100" placeholder="Enh Lvl" />
+      <input type="number" id="weaponModLvl" value="4" placeholder="Mod Lvl" />
   <br>
     <label>Armor:</label>
       <select id="armorEnh">
@@ -59,7 +60,8 @@
         <option value="Spellbreaker">Spellbreaker</option>
         <option value="Hybrid">Hybrid</option>
       </select>
-      <input type="number" id="armorEnhLvl" placeholder="Enh Lvl" />
+      <input type="number" id="armorEnhLvl" value="100" placeholder="Enh Lvl" />
+      <input type="number" id="armorModLvl" value="4" placeholder="Mod Lvl" />
   <br>
     <label>Helm:</label>
       <select id="helmEnh">
@@ -76,7 +78,8 @@
         <option value="Spellbreaker">Spellbreaker</option>
         <option value="Hybrid">Hybrid</option>
       </select>
-      <input type="number" id="helmEnhLvl" placeholder="Enh Lvl" />
+      <input type="number" id="helmEnhLvl" value="100" placeholder="Enh Lvl" />
+      <input type="number" id="helmModLvl" value="4" placeholder="Mod Lvl" />
   <br>
     <label>Cape:</label>
       <select id="capeEnh">
@@ -89,8 +92,8 @@
         <option value="Spellbreaker">Spellbreaker</option>
         <option value="Hybrid">Hybrid</option>
       </select>
-      <input type="number" id="capeEnhLvl" placeholder="Enh Lvl" />
-
+      <input type="number" id="capeEnhLvl" value="100" placeholder="Enh Lvl" />
+      <input type="number" id="capeModLvl" value="4" placeholder="Mod Lvl" />
   <br><br>
   
   <!-- Display the dynamic result -->
@@ -118,6 +121,11 @@
       const armorEnhLvl = document.getElementById("armorEnhLvl").value;
       const helmEnhLvl = document.getElementById("helmEnhLvl").value;
       const capeEnhLvl = document.getElementById("capeEnhLvl").value;
+
+      const weaponModLvl = document.getElementById("weaponModLvl").value;
+      const armorModLvl = document.getElementById("armorModLvl").value;
+      const helmModLvl = document.getElementById("helmModLvl").value;
+      const capeModLvl = document.getElementById("capeModLvl").value;
       
       // Validate level input
       if (level <= 0 || isNaN(level)) {
@@ -128,9 +136,24 @@
       }
 
       // stat calculations
-      let WDPS = getWDPS(level);
+      let WDPS = getWDPS(weaponEnhLvl);
       const primaryStats = getBasePrimaryStats(level, classModel);
 
+      const enhancements = {
+          weaponEnh: "weaponEnh",
+          armorEnh: "armorEnh",
+          helmEnh: "helmEnh",
+          capeEnh: "capeEnh",
+          weaponEnhLvl: "weaponEnhLvl",
+          armorEnhLvl: "armorEnhLvl",
+          helmEnhLvl: "helmEnhLvl",
+          capeEnhLvl: "capeEnhLvl",
+          weaponModLvl: "weaponModLvl",
+          armorModLvl: "armorModLvl",
+          helmModLvl: "helmModLvl",
+          capeModLvl: "capeModLvl"
+      };
+      
       // Rounding before display
       WDPS = Math.round(WDPS);
       
