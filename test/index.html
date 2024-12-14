@@ -9,15 +9,15 @@
 <body>
   <h1>Field Arrangement Example 111</h1>
   
-  <div class="field-container">
-    <!-- Column 1 -->
-    <div class="column">
-      <label for="level">Level</label>
+<div class="container">
+  <!-- Column 1 -->
+  <div class="column">
+    <div class="row">
+      <label for="level">Level:</label>
       <input type="number" id="level" placeholder="Enter your level" />
-
-      <br>
-      
-      <label for="classModel">Class Model</label>
+    </div>
+    <div class="row">
+      <label for="classModel">Class Model:</label>
       <select id="classModel">
         <option value="Tank Melee">Tank Melee</option>
         <option value="Dodge Melee">Dodge Melee</option>
@@ -29,61 +29,84 @@
         <option value="Luck Hybrid">Luck Hybrid</option>
       </select>
     </div>
+  </div>
 
-<!-- Column 2 -->
-<div class="column">
-  <div class="row">
-    <label for="weaponEnhancement">Weapon:</label>
-    <select id="weaponEnhancement">
-      <option value="Lucky">Lucky</option>
-      <option value="Healer">Healer</option>
-      <option value="Fighter">Fighter</option>
-    </select>
+  <!-- Column 2 -->
+  <div class="column">
+    <div class="row">
+      <label for="weaponEnhancement">Weapon:</label>
+      <select id="weaponEnhancement">
+        <option value="Lucky">Lucky</option>
+        <option value="Healer">Healer</option>
+        <option value="Fighter">Fighter</option>
+      </select>
+    </div>
+    <div class="row">
+      <label for="armorEnhancement">Armor:</label>
+      <select id="armorEnhancement">
+        <option value="Lucky">Lucky</option>
+        <option value="Healer">Healer</option>
+        <option value="Fighter">Fighter</option>
+      </select>
+    </div>
+    <div class="row">
+      <label for="helmEnhancement">Helm:</label>
+      <select id="helmEnhancement">
+        <option value="Lucky">Lucky</option>
+        <option value="Healer">Healer</option>
+        <option value="Fighter">Fighter</option>
+      </select>
+    </div>
+    <div class="row">
+      <label for="capeEnhancement">Cape:</label>
+      <select id="capeEnhancement">
+        <option value="Lucky">Lucky</option>
+        <option value="Healer">Healer</option>
+        <option value="Fighter">Fighter</option>
+      </select>
+    </div>
   </div>
-  <div class="row">
-    <label for="armorEnhancement">Armor:</label>
-    <select id="armorEnhancement">
-      <option value="Lucky">Lucky</option>
-      <option value="Healer">Healer</option>
-      <option value="Fighter">Fighter</option>
-    </select>
+
+  <!-- Column 3 -->
+  <div class="column">
+    <div class="row">
+      <label for="weaponEnhLvl">Weapon Level:</label>
+      <input type="number" id="weaponEnhLvl" />
+    </div>
+    <div class="row">
+      <label for="armorEnhLvl">Armor Level:</label>
+      <input type="number" id="armorEnhLvl" />
+    </div>
+    <div class="row">
+      <label for="helmEnhLvl">Helm Level:</label>
+      <input type="number" id="helmEnhLvl" />
+    </div>
+    <div class="row">
+      <label for="capeEnhLvl">Cape Level:</label>
+      <input type="number" id="capeEnhLvl" />
+    </div>
   </div>
-  <div class="row">
-    <label for="helmEnhancement">Helm:</label>
-    <select id="helmEnhancement">
-      <option value="Lucky">Lucky</option>
-      <option value="Healer">Healer</option>
-      <option value="Fighter">Fighter</option>
-    </select>
-  </div>
-  <div class="row">
-    <label for="capeEnhancement">Cape:</label>
-    <select id="capeEnhancement">
-      <option value="Lucky">Lucky</option>
-      <option value="Healer">Healer</option>
-      <option value="Fighter">Fighter</option>
-    </select>
+
+  <!-- Column 4 -->
+  <div class="column">
+    <div class="row">
+      <label for="weaponEnhMod">Weapon Mod:</label>
+      <input type="text" id="weaponEnhMod" />
+    </div>
+    <div class="row">
+      <label for="armorEnhMod">Armor Mod:</label>
+      <input type="text" id="armorEnhMod" />
+    </div>
+    <div class="row">
+      <label for="helmEnhMod">Helm Mod:</label>
+      <input type="text" id="helmEnhMod" />
+    </div>
+    <div class="row">
+      <label for="capeEnhMod">Cape Mod:</label>
+      <input type="text" id="capeEnhMod" />
+    </div>
   </div>
 </div>
 
-    
-    <!-- Column 4-->
-    <div class="column">
-      <label>Enhancement Level</label>
-      <input type="number" value="100" />
-      <input type="number" value="100" />
-      <input type="number" value="100" />
-      <input type="number" value="100" />
-    </div>
-    
-    <!-- Column 5 -->
-    <div class="column">
-      <label>Enhancement Modifier</label>
-      <input type="number" value="5" />
-      <input type="number" value="5" />
-      <input type="number" value="5" />
-      <input type="number" value="5" />
-    </div>
-  </div>
 </body>
 </html>
