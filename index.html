@@ -8,7 +8,7 @@
 <body>
   <h1>Stat Calculator</h1>
 
-  <label for="test">testing1234</label>
+  <label for="test">testing123</label>
   <br><br>
   
   <!-- Level Input -->
@@ -99,7 +99,7 @@
   <!-- Display the dynamic result -->
   <div id="showWDPS"></div>
   <div id="showPrimaryStats"></div>
-  <div id="showWeaponEnh"></div>
+  <div id="showEnhStats"></div>
 
   <!-- Link to the External JavaScript file -->
   <script src="statcalc.js"></script>
@@ -139,7 +139,7 @@
       // stat calculations
       let WDPS = getWDPS(weaponEnhLvl);
       const primaryStats = getBasePrimaryStats(level, classModel);
-
+      
       const enhancements = {
           weaponEnh: weaponEnh,
           armorEnh: armorEnh,
@@ -154,6 +154,8 @@
           helmModLvl: helmModLvl,
           capeModLvl: capeModLvl
       };
+
+      const enhStats = getEnhPrimaryStats(enhancements);
       
       // Rounding before display
       WDPS = Math.round(WDPS);
@@ -177,8 +179,17 @@
           <li><strong>Luck:</strong> ${primaryStats.luck}</li>
         </ul>
       `;     
-      document.getElementById("showWeaponEnh").innerHTML = `Wep Enh: ${enhancements.armorModLvl}`;
-      
+      document.getElementById("showEnhStats").innerHTML = `
+        <h3 style="color: red;">Enhancement Stats:</h3>
+        <ul style="font-family: Arial, sans-serif;">
+          <li><strong>Strength:</strong> ${enhStats.strength}</li>
+          <li><strong>Intellect:</strong> ${enhStats.intellect}</li>
+          <li><strong>Endurance:</strong> ${enhStats.endurance}</li>
+          <li><strong>Dexterity:</strong> ${enhStats.dexterity}</li>
+          <li><strong>Wisdom:</strong> ${enhStats.wisdom}</li>
+          <li><strong>Luck:</strong> ${enhStats.luck}</li>
+        </ul>
+      `;       
     }
 
     // Attach event listeners to inputs
