@@ -20,6 +20,7 @@ function getTotalBasePrimaryStats(level) {
   return totalBasePrimaryStats;
 }
 
+// 8 class models
 const classModelStatsDist = {
     "Tank Melee": {
         strength: 0.27,
