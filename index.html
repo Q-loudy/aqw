@@ -8,7 +8,6 @@
 <body>
   <h1>Stat Calculator</h1>
 
-  //<label for="test">testing123</label>
   <br><br>
   
   <!-- Level Input -->
@@ -139,6 +138,7 @@
       // stat calculations
       let WDPS = getWDPS(weaponEnhLvl);
       const primaryStats = getBasePrimaryStats(level, classModel);
+      console.log("Base Primary Stats");      
       console.log(primaryStats);
       
       const enhancements = {
@@ -157,11 +157,13 @@
       };
 
       const enhStats = getEnhPrimaryStats(enhancements);
+      console.log("Enh Stats");      
       console.log(enhStats);
 
       for (const key in primaryStats) {
         primaryStats[key] = primaryStats[key] + enhStats[key];
       }
+      console.log("Total Primary Stats");      
       console.log(primaryStats);
       
       // Display the result
@@ -176,18 +178,7 @@
           <li><strong>Wisdom:</strong> ${primaryStats.wisdom}</li>
           <li><strong>Luck:</strong> ${primaryStats.luck}</li>
         </ul>
-      `;     
-      document.getElementById("showEnhStats").innerHTML = `
-        <h3 style="color: orange;">Enhancement Stats:</h3>
-        <ul style="font-family: Arial, sans-serif;">
-          <li><strong>Strength:</strong> ${enhStats.strength}</li>
-          <li><strong>Intellect:</strong> ${enhStats.intellect}</li>
-          <li><strong>Endurance:</strong> ${enhStats.endurance}</li>
-          <li><strong>Dexterity:</strong> ${enhStats.dexterity}</li>
-          <li><strong>Wisdom:</strong> ${enhStats.wisdom}</li>
-          <li><strong>Luck:</strong> ${enhStats.luck}</li>
-        </ul>
-      `;       
+      `;          
     }
 
     // Attach event listeners to inputs
