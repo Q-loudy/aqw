@@ -6,7 +6,7 @@ function getBaseHP(level)  {
 }  
 
 function getWDPS(level) {
-  let WDPS = ROUND(getBaseHP(level)/20*0.85);
+  let WDPS = Math.round(getBaseHP(level)/20*0.85);
   return WDPS;
 }
 
