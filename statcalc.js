@@ -228,17 +228,54 @@ const EnhStatDist = {
 };
 
 function getEnhPrimaryStats(enhancements) {
-  let enhPrimaryStats = {
-    strength: 0,
-    intellect: 0,
-    endurance: 0,
-    dexterity: 0,
-    wisdom: 0,
-    luck: 0
+    // Define the resulting object for enhanced primary stats
+    let enhPrimaryStats = {
+      strength: 0,
+      intellect: 0,
+      endurance: 0,
+      dexterity: 0,
+      wisdom: 0,
+      luck: 0
+    };
+  
+    // Define the formula constants
+    const baseFactor = 560;
+    const baseAdd = 12;
+  
+    // Define enhancement types and their multipliers
+    const enhTypes = [
+      { type: "weaponEnh", lvl: "weaponEnhLvl", mod: "weaponModLvl", multiplier: 0.33 },
+      { type: "armorEnh", lvl: "armorEnhLvl", mod: "armorModLvl", multiplier: 0.25 },
+      { type: "helmEnh", lvl: "helmEnhLvl", mod: "helmModLvl", multiplier: 0.25 },
+      { type: "capeEnh", lvl: "capeEnhLvl", mod: "capeModLvl", multiplier: 0.2 }
+    ];
+  
+    // Loop through each enhancement type
+    enhTypes.forEach(({ type, lvl, mod, multiplier }) => {
+      const enhType = enhancements[type];
+      const enhLvl = enhancements[lvl];
+      const modLvl = enhancements[mod];
+  
+      // Lookup stats distribution for the enhancement type
+      const statDist = EnhStatDist[enhType];
+      if (!statDist) {
+        console.error(`Enhancement type ${enhType} not found in EnhStatDist.`);
+        return;
+      }
+  
+      // Calculate the base enhancement factor
+      const baseEnhFactor = Math.round(((enhLvl + modLvl) / (100 - 1)) * baseFactor + baseAdd);
+  
+      // Add calculated stats to enhPrimaryStats
+      enhPrimaryStats.strength += Math.round(Math.round(baseEnhFactor * multiplier) * (statDist.strength || 0));
+      enhPrimaryStats.intellect += Math.round(Math.round(baseEnhFactor * multiplier) * (statDist.intellect || 0));
+      enhPrimaryStats.endurance += Math.round(Math.round(baseEnhFactor * multiplier) * (statDist.endurance || 0));
+      enhPrimaryStats.dexterity += Math.round(Math.round(baseEnhFactor * multiplier) * (statDist.dexterity || 0));
+      enhPrimaryStats.wisdom += Math.round(Math.round(baseEnhFactor * multiplier) * (statDist.wisdom || 0));
+      enhPrimaryStats.luck += Math.round(Math.round(baseEnhFactor * multiplier) * (statDist.luck || 0));
+    });
+  
+    // Return the final stats
+    return enhPrimaryStats;
   }
-
   
-
-  
-  return enhPrimaryStats
-}
