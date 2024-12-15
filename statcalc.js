@@ -20,6 +20,7 @@ function getTotalBasePrimaryStats(level) {
   return totalBasePrimaryStats;
 }
 
+// Store base primary stat distributions for all class models 
 // 8 class models
 const classModelStatsDist = {
     "Tank Melee": {
@@ -115,7 +116,116 @@ function getBasePrimaryStats(level, classModel) {
     return basePrimaryStats;
 }
 
+// Store primary stat distributions for all enhancements
+// 7 regular + depth + forge + 4 helm = 13 enhancements
+const EnhStatDist = {
+    Fighter: {
+        strength: 0.44,
+        intellect: 0,
+        endurance: 0.43,
+        dexterity: 0.13,
+        wisdom: 0,
+        luck: 0
+    },
+    Thief: {
+        strength: 0.30,
+        intellect: 0,
+        endurance: 0.25,
+        dexterity: 0.45,
+        wisdom: 0,
+        luck: 0
+    },
+    Wizard: {
+        strength: 0,
+        intellect: 0.50,
+        endurance: 0.10,
+        dexterity: 0,
+        wisdom: 0.20,
+        luck: 0.20
+    },
+    Healer: {
+        strength: 0,
+        intellect: 0.45,
+        endurance: 0.40,
+        dexterity: 0,
+        wisdom: 0.15,
+        luck: 0
+    },
+    Hybrid: {
+        strength: 0.28,
+        intellect: 0.27,
+        endurance: 0.25,
+        dexterity: 0.20,
+        wisdom: 0,
+        luck: 0
+    },
+    Lucky: {
+        strength: 0.10,
+        intellect: 0.10,
+        endurance: 0.10,
+        dexterity: 0.10,
+        wisdom: 0.10,
+        luck: 0.50
+    },
+    Spellbreaker: {
+        strength: 0,
+        intellect: 0.40,
+        endurance: 0.20,
+        dexterity: 0,
+        wisdom: 0.30,
+        luck: 0.10
+    },
+    Depth: {
+        strength: 0,
+        intellect: 0.50,
+        endurance: 0,
+        dexterity: 0,
+        wisdom: 0,
+        luck: 0.50
+    },
+    Forge: {
+        strength: 0.25,
+        intellect: 0.25,
+        endurance: 0,
+        dexterity: 0,
+        wisdom: 0,
+        luck: 0.50
+    },
 
+    // store ratios of enh stats at lvl 100 for helm forge
+    Vim: {
+        strength: 15/152,
+        intellect: 0,
+        endurance: -137/152,
+        dexterity: 198/152,
+        wisdom: 0,
+        luck: 76/152
+    },
+    Examen: {
+        strength: 0,
+        intellect: 15/152,
+        endurance: -137/152,
+        dexterity: 0,
+        wisdom: 198/152,
+        luck: 76/152
+    },
+    Anima: {
+        strength: 204/152,
+        intellect: 24/152,
+        endurance: -136/152,
+        dexterity: 36/152,
+        wisdom: 24/152,
+        luck: 0
+    },
+    Pneuma: {
+        strength: 36/152,
+        intellect: 179/152,
+        endurance: -137/152,
+        dexterity: 36/152,
+        wisdom: 36/152,
+        luck: 0
+    }
+};
 
 function getEnhPrimaryStats(enhancements) {
   let enhPrimaryStats = {
