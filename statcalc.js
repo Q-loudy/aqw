@@ -114,7 +114,9 @@ function getBasePrimaryStats(level, classModel) {
 
     return basePrimaryStats;
 }
-  
+
+
+
 function getEnhPrimaryStats(enhancements) {
   let enhPrimaryStats = {
     strength: 0,
