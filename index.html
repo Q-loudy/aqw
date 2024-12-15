@@ -8,7 +8,7 @@
 <body>
   <h1>Stat Calculator</h1>
 
-  <label for="test">testing123</label>
+  //<label for="test">testing123</label>
   <br><br>
   
   <!-- Level Input -->
@@ -139,6 +139,7 @@
       // stat calculations
       let WDPS = getWDPS(weaponEnhLvl);
       const primaryStats = getBasePrimaryStats(level, classModel);
+      console.log(primaryStats);
       
       const enhancements = {
           weaponEnh: weaponEnh,
@@ -156,7 +157,13 @@
       };
 
       const enhStats = getEnhPrimaryStats(enhancements);
-            
+      console.log(enhStats);
+
+      for (const key in primaryStats) {
+        primaryStats[key] = primaryStats[key] + enhStats[key];
+      }
+      console.log(primaryStats);
+      
       // Display the result
       document.getElementById("showWDPS").innerHTML = `WDPS: ${WDPS}`;
       document.getElementById("showPrimaryStats").innerHTML = `
