@@ -159,13 +159,7 @@
       
       // Rounding before display
       WDPS = Math.round(WDPS);
-      
-      for (let key in primaryStats) {
-      if (primaryStats.hasOwnProperty(key)) {
-          primaryStats[key] = Math.round(primaryStats[key]); 
-        }
-      }
-      
+            
       // Display the result
       document.getElementById("showWDPS").innerHTML = `WDPS: ${WDPS}`;
       document.getElementById("showPrimaryStats").innerHTML = `
