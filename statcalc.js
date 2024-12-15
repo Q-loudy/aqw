@@ -266,6 +266,7 @@ function getEnhPrimaryStats(enhancements) {
       // Calculate the base enhancement factor
       const baseEnhFactor = Math.round(((enhLvl + modLvl) / (100 - 1)) * baseFactor + baseAdd);
       console.log(enhType);
+      console.log((enhLvl + modLvl) / (100 - 1));
       console.log(baseEnhFactor);
       
       // Add calculated stats to enhPrimaryStats
