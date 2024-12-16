@@ -135,9 +135,9 @@
 
       // stat calculations
       let WDPS = getWDPS(weaponEnhLvl);
-      const primaryStats = getBasePrimaryStats(level, classModel);
+      const basePrimaryStats = getBasePrimaryStats(level, classModel);
       console.log("Base Primary Stats");      
-      console.log(primaryStats);
+      console.log(basePrimaryStats);
       
       const enhancements = {
           weaponEnh: weaponEnh,
@@ -158,8 +158,9 @@
       console.log("Enh Stats");      
       console.log(enhStats);
 
+      primaryStats = getBasePrimaryStats(level, classModel);
       for (const key in primaryStats) {
-        primaryStats[key] = primaryStats[key] + enhStats[key];
+        primaryStats[key] = basePrimaryStats[key] + enhStats[key];
       }
       console.log("Total Primary Stats");      
       console.log(primaryStats);
@@ -167,7 +168,19 @@
       const secondaryStats = getSecondaryStats(level, classModel, primaryStats);
       console.log("Secondary Stats");      
       console.log(secondaryStats);      
+
+      // show damage functions in console
+      ap1 = WDPS + 0.1 * secondaryStats.attackPower;
+      sp1 = WDPS + 0.1 * secondaryStats.spellPower;
+      apsp1 = WDPS + 0.1 * secondaryStats.attackPower + 0.1 * secondaryStats.spellPower;
       
+      console.log("AP1");      
+      console.log(ap1);      
+      console.log("SP1"); 
+      console.log(sp1);            
+      console.log("APSP1");  
+      console.log(apsp1);      
+
       // Display the result
       document.getElementById("showWDPS").innerHTML = `WDPS: ${WDPS}`;
       document.getElementById("showPrimaryStats").innerHTML = `
