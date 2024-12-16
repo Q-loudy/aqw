@@ -278,4 +278,108 @@ function getEnhPrimaryStats(enhancements) {
     // Return the final stats
     return enhPrimaryStats;
   }
+
+const secondaryStatsDist = {
+    "Tank Melee": {
+        attackPower: { strength: 2, luck: 0.7 },
+        spellPower: { intellect: 2 },
+        hitChance: { dexterity: 0.2, luck: 0.1 },
+        haste: { dexterity: 0.3, luck: 0.1 },
+        critChance: { strength: 0.4, luck: 0.2 },
+        critMod: { luck: 5 },
+        evasion: { dexterity: 0.3, wisdom: 0.3, luck: 0.1 }
+    },
+    "Dodge Melee": {
+        attackPower: { strength: 2, luck: 0.7 },
+        spellPower: { intellect: 2 },
+        hitChance: { dexterity: 0.2, luck: 0.1 },
+        haste: { dexterity: 0.5, luck: 0.1 },
+        critChance: { strength: 0.4, luck: 0.2 },
+        critMod: { luck: 5 },
+        evasion: { dexterity: 0.5, wisdom: 0.3, luck: 0.1 }
+    },
+    "Power Melee": {
+        attackPower: { strength: 2, luck: 0.7 },
+        spellPower: { intellect: 2 },
+        hitChance: { dexterity: 0.2, luck: 0.1 },
+        haste: { dexterity: 0.5, luck: 0.1 },
+        critChance: { strength: 0.7, luck: 0.2 },
+        critMod: { luck: 5 },
+        evasion: { dexterity: 0.3, wisdom: 0.3, luck: 0.1 }
+    },
+    "Offensive Caster": {
+        attackPower: { strength: 2 },
+        spellPower: { intellect: 2, luck: 0.7 },
+        hitChance: { wisdom: 0.2, luck: 0.1 },
+        haste: { intellect: 0.3, luck: 0.1 },
+        critChance: { wisdom: 0.7, luck: 0.2 },
+        critMod: { luck: 5 },
+        evasion: { dexterity: 0.3, wisdom: 0.3, luck: 0.1 },
+        magOut: { intellect: 1 }
+    },
+    "Defensive Caster": {
+        attackPower: { strength: 2 },
+        spellPower: { intellect: 2, luck: 0.7 },
+        hitChance: { wisdom: 0.2, luck: 0.1 },
+        haste: { intellect: 0.5, luck: 0.1 },
+        critChance: { wisdom: 0.4, luck: 0.2 },
+        critMod: { luck: 5 },
+        evasion: { dexterity: 0.3, wisdom: 0.3, luck: 0.1 },
+        magOut: { intellect: 1 }
+    },
+    "Power Caster": {
+        attackPower: { strength: 2 },
+        spellPower: { intellect: 2, luck: 0.7 },
+        hitChance: { wisdom: 0.2, luck: 0.1 },
+        haste: { intellect: 0.3, luck: 0.1 },
+        critChance: { wisdom: 0.4, luck: 0.2 },
+        critMod: { luck: 5 },
+        evasion: { dexterity: 0.3, wisdom: 0.3, luck: 0.1 },
+        magOut: { intellect: 1 }
+    },
+    "Full Hybrid": {
+        attackPower: { strength: 2, luck: 0.7 },
+        spellPower: { intellect: 2, luck: 0.7 },
+        hitChance: { dexterity: 0.2, luck: 0.1 },
+        haste: { intellect: 0.3, dexterity: 0.3, luck: 0.1 },
+        critChance: { strength: 0.4, luck: 0.2 },
+        critMod: { luck: 5 },
+        evasion: { dexterity: 0.5, wisdom: 0.3, luck: 0.1 },
+        magOut: { intellect: 1 }
+    },
+    "Luck Hybrid": {
+        attackPower: { strength: 1.4, luck: 1 },
+        spellPower: { intellect: 1.4, luck: 1 },
+        hitChance: { dexterity: 0.2, wisdom: 0.2, luck: 0.1 },
+        haste: { intellect: 0.3, dexterity: 0.3, luck: 0.3 },
+        critChance: { strength: 0.4, wisdom: 0.4, luck: 0.3 },
+        critMod: { luck: 2.5 },
+        evasion: { dexterity: 0.3, wisdom: 0.3, luck: 0.25 }
+    }
+};    
+
+function getSecondaryStats(level, classModel, primaryStats) {
+    let secondaryStats = {
+        attackPower: 0,
+        spellPower: 0,
+        health: primaryStats.endurance * 5,
+        hitchance: 0,
+        haste: 0,
+        critChance: 0,
+        critMod: 0,
+        evasion: 0,
+        magIn: primaryStats.intellect * -1,
+        magOut: 0
+    };
+
+  const multipliers = classModelStats[classModel]; 
+
+  for (const [statName, contributions] of Object.entries(multipliers)) {
+    secondaryStats[statName] = Object.entries(contributions).reduce(
+        (sum, [primaryStat, multiplier]) => sum + (primaryStats[primaryStat] || 0) * multiplier, 0);
+  }
+
+
   
+  return secondaryStats;
+}
