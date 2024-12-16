@@ -176,7 +176,18 @@
           <li><strong>Wisdom:</strong> ${primaryStats.wisdom}</li>
           <li><strong>Luck:</strong> ${primaryStats.luck}</li>
         </ul>
-      `;          
+      `;  
+      document.getElementById("showSecondaryStats").innerHTML = `
+        <h3 style="color: orange;">Secondary Stats:</h3>
+        <ul style="font-family: Arial, sans-serif;">
+          <li><strong>Strength:</strong> ${secondaryStats.strength}</li>
+          <li><strong>Intellect:</strong> ${primaryStats.intellect}</li>
+          <li><strong>Endurance:</strong> ${primaryStats.endurance}</li>
+          <li><strong>Dexterity:</strong> ${primaryStats.dexterity}</li>
+          <li><strong>Wisdom:</strong> ${primaryStats.wisdom}</li>
+          <li><strong>Luck:</strong> ${primaryStats.luck}</li>
+        </ul>
+      `;  
     }
 
     // Attach event listeners to inputs
