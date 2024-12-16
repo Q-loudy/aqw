@@ -385,13 +385,13 @@ function getSecondaryStats(level, classModel, primaryStats) {
   efficiency = getEfficiency(level);
   
   secondaryStats.health = baseHP + secondaryStats.health;
-  secondaryStats.hitChance = Math.round(90 + secondaryStats.hitChance * efficiency);
-  secondaryStats.haste = Math.round(secondaryStats.haste * efficiency);
-  secondaryStats.critChance = Math.round(5 + secondaryStats.critChance * efficiency);
-  secondaryStats.critMod = Math.round(150 + secondaryStats.critMod * efficiency);
-  secondaryStats.evasion = Math.round(4 + secondaryStats.evasion * efficiency);
-  secondaryStats.magIn = Math.round(secondaryStats.magIn * efficiency);
-  secondaryStats.magOut = Math.round(secondaryStats.magOut * efficiency);
+  secondaryStats.hitChance = Math.round(90 + secondaryStats.hitChance * efficiency, 2);
+  secondaryStats.haste = Math.round(secondaryStats.haste * efficiency, 2);
+  secondaryStats.critChance = Math.round(5 + secondaryStats.critChance * efficiency, 2);
+  secondaryStats.critMod = Math.round(150 + secondaryStats.critMod * efficiency, 2);
+  secondaryStats.evasion = Math.round(4 + secondaryStats.evasion * efficiency, 2);
+  secondaryStats.magIn = Math.round(secondaryStats.magIn * efficiency, 2);
+  secondaryStats.magOut = Math.round(secondaryStats.magOut * efficiency, 2);
 
   return secondaryStats;
 }
