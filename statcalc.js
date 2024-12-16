@@ -218,9 +218,9 @@ const EnhStatDist = {
         luck: 0
     },
     Pneuma: {
-        strength: 36/152,
+        strength: 37/152,
         intellect: 179/152,
-        endurance: -137/152,
+        endurance: -136/152,
         dexterity: 36/152,
         wisdom: 36/152,
         luck: 0
