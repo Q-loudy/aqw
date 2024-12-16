@@ -384,7 +384,10 @@ function getSecondaryStats(level, classModel, primaryStats) {
   baseHP = getBaseHP(level);
   efficiency = getEfficiency(level);
   
+  secondaryStats.attackPower = Math.round(secondaryStats.attackPower);
+  secondaryStats.spellPower = Math.round(secondaryStats.spellPower);
   secondaryStats.health = baseHP + secondaryStats.health;
+  
   secondaryStats.hitChance = Math.round(90 + secondaryStats.hitChance * efficiency * 100) / 100;
   secondaryStats.haste = Math.round(secondaryStats.haste * efficiency * 100) / 100;
   secondaryStats.critChance = Math.round(5 + secondaryStats.critChance * efficiency * 100) / 100;
