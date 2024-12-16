@@ -374,12 +374,24 @@ function getSecondaryStats(level, classModel, primaryStats) {
 
   const multipliers = classModelStats[classModel]; 
 
+  // calculate secondary stats
   for (const [statName, contributions] of Object.entries(multipliers)) {
     secondaryStats[statName] = Object.entries(contributions).reduce(
         (sum, [primaryStat, multiplier]) => sum + (primaryStats[primaryStat] || 0) * multiplier, 0);
   }
 
-
+  // apply base values and efficiency
+  baseHP = getBaseHP(level);
+  efficiency = getEfficiency(level);
   
+  secondaryStats.health = baseHP + secondaryStats.health * efficiency;
+  secondaryStats.hitchance = 90 + secondaryStats.hitchance * efficiency;
+  secondaryStats.haste = secondaryStats.haste * efficiency;
+  secondaryStats.critChance = 5 + secondaryStats.critChance * efficiency;
+  secondaryStats.critMod = 150 + secondaryStats.critMod * efficiency;
+  secondaryStats.evasion = 4 + secondaryStats.evasion * efficiency;
+  secondaryStats.magIn = secondaryStats.magIn * efficiency;
+  secondaryStats.magOut = secondaryStats.magOut * efficiency;
+
   return secondaryStats;
 }
