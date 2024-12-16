@@ -372,7 +372,7 @@ function getSecondaryStats(level, classModel, primaryStats) {
         magOut: 0
     };
 
-  const multipliers = classModelStats[classModel]; 
+  const multipliers = secondaryStatsDist[classModel]; 
 
   // calculate secondary stats
   for (const [statName, contributions] of Object.entries(multipliers)) {
