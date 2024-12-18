@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AQW Stat Calculator</title>
+</head>
+<body>
+  <h1>Stat Calculator</h1>
+  
+  <!-- Level Input -->
+  <label for="level">Level</label>
+  <input type="number" id="level" value="100" placeholder="Enter your level" />
+  <div id="result"></div>
+
+  <br>
+  
+  <!-- Dropdown Menu for Class Model -->
+  <label for="classModel">Class Model</label>
+  <select id="classModel">
+    <option value="Tank Melee">Tank Melee</option>
+    <option value="Dodge Melee">Dodge Melee</option>
+    <option value="Power Melee">Power Melee</option>
+    <option value="Offensive Caster">Offensive Caster</option>
+    <option value="Defensive Caster">Defensive Caster</option>
+    <option value="Power Caster">Power Caster</option>
+    <option value="Full Hybrid">Full Hybrid</option>
+    <option value="Luck Hybrid">Luck Hybrid</option>
+  </select>
+
+  <br><br>
+
+  <!-- Enhancement types and levels -->  
+  <label>Weapon:</label>
+      <select id="weaponEnh">
+        <option value="Lucky">Lucky</option>
+        <option value="Wizard">Wizard</option>
+        <option value="Forge">Forge</option>
+        <option value="Depth">Depth</option>
+        <option value="Fighter">Fighter</option>
+        <option value="Healer">Healer</option>
+        <option value="Thief">Thief</option>
+        <option value="Spellbreaker">Spellbreaker</option>
+        <option value="Hybrid">Hybrid</option>
+      </select>
+      <input type="number" id="weaponEnhLvl" value="100" placeholder="Enh Lvl" />
+      <input type="number" id="weaponModLvl" value="4" placeholder="Mod Lvl" />
+  <br>
+    <label>Armor:</label>
+      <select id="armorEnh">
+        <option value="Lucky">Lucky</option>
+        <option value="Wizard">Wizard</option>
+        <option value="Forge">Forge</option>
+        <option value="Fighter">Fighter</option>
+        <option value="Healer">Healer</option>
+        <option value="Thief">Thief</option>
+        <option value="Spellbreaker">Spellbreaker</option>
+        <option value="Hybrid">Hybrid</option>
+      </select>
+      <input type="number" id="armorEnhLvl" value="100" placeholder="Enh Lvl" />
+      <input type="number" id="armorModLvl" value="4" placeholder="Mod Lvl" />
+  <br>
+    <label>Helm:</label>
+      <select id="helmEnh">
+        <option value="Lucky">Lucky</option>
+        <option value="Wizard">Wizard</option>
+        <option value="Forge">Forge</option>
+        <option value="Vim">Vim</option>
+        <option value="Examen">Examen</option>
+        <option value="Anima">Anima</option>
+        <option value="Pneuma">Pneuma</option>
+        <option value="Fighter">Fighter</option>
+        <option value="Healer">Healer</option>
+        <option value="Thief">Thief</option>
+        <option value="Spellbreaker">Spellbreaker</option>
+        <option value="Hybrid">Hybrid</option>
+      </select>
+      <input type="number" id="helmEnhLvl" value="100" placeholder="Enh Lvl" />
+      <input type="number" id="helmModLvl" value="4" placeholder="Mod Lvl" />
+  <br>
+    <label>Cape:</label>
+      <select id="capeEnh">
+        <option value="Lucky">Lucky</option>
+        <option value="Wizard">Wizard</option>
+        <option value="Forge">Forge</option>
+        <option value="Fighter">Fighter</option>
+        <option value="Healer">Healer</option>
+        <option value="Thief">Thief</option>
+        <option value="Spellbreaker">Spellbreaker</option>
+        <option value="Hybrid">Hybrid</option>
+      </select>
+      <input type="number" id="capeEnhLvl" value="100" placeholder="Enh Lvl" />
+      <input type="number" id="capeModLvl" value="4" placeholder="Mod Lvl" />
+  <br><br>
+  
+  <!-- Display the dynamic result -->
+  <div id="showWDPS"></div>
+  <div id="showPrimaryStats"></div>
+  <div id="showSecondaryStats"></div>
+
+  <!-- Link to the External JavaScript file -->
+  <script src="statcalc.js"></script>
+
+  <!-- JavaScript to Update the Stats Dynamically -->
+  <script>
+    // Function to update the result dynamically
+    function updateStats() {
+      // Get the level and selected class model 
+      const level = document.getElementById("level").value;
+      const classModel = document.getElementById("classModel").value;
+
+      // Get enhancement types and levels
+      const weaponEnh = document.getElementById("weaponEnh").value;
+      const armorEnh = document.getElementById("armorEnh").value;
+      const helmEnh = document.getElementById("helmEnh").value;
+      const capeEnh = document.getElementById("capeEnh").value;
+
+      const weaponEnhLvl = document.getElementById("weaponEnhLvl").value;
+      const armorEnhLvl = document.getElementById("armorEnhLvl").value;
+      const helmEnhLvl = document.getElementById("helmEnhLvl").value;
+      const capeEnhLvl = document.getElementById("capeEnhLvl").value;
+
+      const weaponModLvl = document.getElementById("weaponModLvl").value;
+      const armorModLvl = document.getElementById("armorModLvl").value;
+      const helmModLvl = document.getElementById("helmModLvl").value;
+      const capeModLvl = document.getElementById("capeModLvl").value;
+      
+      // Validate level input
+      if (level <= 0 || isNaN(level)) {
+        document.getElementById("result").innerHTML = "Please enter a valid level.";
+        return;
+      } else {
+        document.getElementById("result").innerHTML = "";
+      }
+
+      // stat calculations
+      let WDPS = getWDPS(weaponEnhLvl);
+      const basePrimaryStats = getBasePrimaryStats(level, classModel);
+      console.log("Base Primary Stats");      
+      console.log(basePrimaryStats);
+      
+      const enhancements = {
+          weaponEnh: weaponEnh,
+          armorEnh: armorEnh,
+          helmEnh: helmEnh,
+          capeEnh: capeEnh,
+          weaponEnhLvl: weaponEnhLvl,
+          armorEnhLvl: armorEnhLvl,
+          helmEnhLvl: helmEnhLvl,
+          capeEnhLvl: capeEnhLvl,
+          weaponModLvl: weaponModLvl,
+          armorModLvl: armorModLvl,
+          helmModLvl: helmModLvl,
+          capeModLvl: capeModLvl
+      };
+
+      const enhStats = getEnhPrimaryStats(enhancements);
+      console.log("Enh Stats");      
+      console.log(enhStats);
+
+      primaryStats = getBasePrimaryStats(level, classModel);
+      for (const key in primaryStats) {
+        primaryStats[key] = basePrimaryStats[key] + enhStats[key];
+      }
+      console.log("Total Primary Stats");      
+      console.log(primaryStats);
+
+      const secondaryStats = getSecondaryStats(level, classModel, primaryStats);
+      console.log("Secondary Stats");      
+      console.log(secondaryStats);      
+
+      // show damage functions in console
+      ap1 = WDPS + 0.1 * secondaryStats.attackPower;
+      sp1 = WDPS + 0.1 * secondaryStats.spellPower;
+      apsp1 = WDPS + 0.1 * secondaryStats.attackPower + 0.1 * secondaryStats.spellPower;
+      
+      console.log("AP1");      
+      console.log(ap1);      
+      console.log("SP1"); 
+      console.log(sp1);            
+      console.log("APSP1");  
+      console.log(apsp1);      
+
+      // Display the result
+      document.getElementById("showWDPS").innerHTML = `WDPS: ${WDPS}`;
+      document.getElementById("showPrimaryStats").innerHTML = `
+        <h3 style="color: red;">Primary Stats (Core Stats):</h3>
+        <ul style="font-family: Arial, sans-serif;">
+          <li><strong>Strength:</strong> ${primaryStats.strength}</li>
+          <li><strong>Intellect:</strong> ${primaryStats.intellect}</li>
+          <li><strong>Endurance:</strong> ${primaryStats.endurance}</li>
+          <li><strong>Dexterity:</strong> ${primaryStats.dexterity}</li>
+          <li><strong>Wisdom:</strong> ${primaryStats.wisdom}</li>
+          <li><strong>Luck:</strong> ${primaryStats.luck}</li>
+        </ul>
+      `;  
+      document.getElementById("showSecondaryStats").innerHTML = `
+        <h3 style="color: orange;">Secondary Stats:</h3>
+        <ul style="font-family: Arial, sans-serif;">
+          <li><strong>Attack Power:</strong> ${secondaryStats.attackPower}</li>
+          <li><strong>Spell Power:</strong> ${secondaryStats.spellPower}</li>
+          <li><strong>Max Health:</strong> ${secondaryStats.health}</li>
+          <li><strong>Hit Chance:</strong> ${secondaryStats.hitChance}</li>
+          <li><strong>Haste:</strong> ${secondaryStats.haste}</li>
+          <li><strong>Crit Chance:</strong> ${secondaryStats.critChance}</li>
+          <li><strong>Crit Mod:</strong> ${secondaryStats.critMod}</li>
+          <li><strong>Evasion:</strong> ${secondaryStats.evasion}</li>
+          <li><strong>Mag In:</strong> ${secondaryStats.magIn}</li>
+          <li><strong>Mag Out:</strong> ${secondaryStats.magOut}</li>
+        </ul>
+      `;  
+    }
+
+    // Attach event listeners to inputs
+    updateStats();
+    document.getElementById("level").addEventListener("input", updateStats);
+    document.getElementById("classModel").addEventListener("change", updateStats);
+    
+    document.getElementById("weaponEnh").addEventListener("change", updateStats);
+    document.getElementById("armorEnh").addEventListener("change", updateStats);
+    document.getElementById("helmEnh").addEventListener("change", updateStats);
+    document.getElementById("capeEnh").addEventListener("change", updateStats);
+
+    document.getElementById("weaponEnhLvl").addEventListener("change", updateStats);
+    document.getElementById("armorEnhLvl").addEventListener("change", updateStats);
+    document.getElementById("helmEnhLvl").addEventListener("change", updateStats);
+    document.getElementById("capeEnhLvl").addEventListener("change", updateStats);
+
+    document.getElementById("weaponModLvl").addEventListener("change", updateStats);
+    document.getElementById("armorModLvl").addEventListener("change", updateStats);
+    document.getElementById("helmModLvl").addEventListener("change", updateStats);
+    document.getElementById("capeModLvl").addEventListener("change", updateStats);
+    
+  </script>
+</body>
+</html>
