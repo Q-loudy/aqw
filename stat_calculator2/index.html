@@ -6,7 +6,7 @@
   <title>AQW Stat Calculator</title>
 </head>
 <body>
-  <h1>Stat Calculator2</h1>
+  <h1>Stat Calculator21</h1>
   
   <!-- Level Input -->
   <label for="level">Level</label>
@@ -32,7 +32,7 @@
 
   <!-- Enhancement types and levels -->  
   <label>Weapon:</label>
-      <select id="weaponEnh">
+      <select id="weaponEnh" class="enh-input">
         <option value="Lucky">Lucky</option>
         <option value="Wizard">Wizard</option>
         <option value="Forge">Forge</option>
@@ -43,11 +43,11 @@
         <option value="Spellbreaker">Spellbreaker</option>
         <option value="Hybrid">Hybrid</option>
       </select>
-      <input type="number" id="weaponEnhLvl" value="100" placeholder="Enh Lvl" />
-      <input type="number" id="weaponModLvl" value="4" placeholder="Mod Lvl" />
+      <input type="number" id="weaponEnhLvl" value="100" placeholder="Enh Lvl" class="enh-input"/>
+      <input type="number" id="weaponModLvl" value="4" placeholder="Mod Lvl" class="enh-input"/>
   <br>
     <label>Armor:</label>
-      <select id="armorEnh">
+      <select id="armorEnh" class="enh-input">
         <option value="Lucky">Lucky</option>
         <option value="Wizard">Wizard</option>
         <option value="Forge">Forge</option>
@@ -57,11 +57,11 @@
         <option value="Spellbreaker">Spellbreaker</option>
         <option value="Hybrid">Hybrid</option>
       </select>
-      <input type="number" id="armorEnhLvl" value="100" placeholder="Enh Lvl" />
-      <input type="number" id="armorModLvl" value="4" placeholder="Mod Lvl" />
+      <input type="number" id="armorEnhLvl" value="100" placeholder="Enh Lvl" class="enh-input"/>
+      <input type="number" id="armorModLvl" value="4" placeholder="Mod Lvl" class="enh-input"/>
   <br>
     <label>Helm:</label>
-      <select id="helmEnh">
+      <select id="helmEnh" class="enh-input">
         <option value="Lucky">Lucky</option>
         <option value="Wizard">Wizard</option>
         <option value="Forge">Forge</option>
@@ -75,11 +75,11 @@
         <option value="Spellbreaker">Spellbreaker</option>
         <option value="Hybrid">Hybrid</option>
       </select>
-      <input type="number" id="helmEnhLvl" value="100" placeholder="Enh Lvl" />
-      <input type="number" id="helmModLvl" value="4" placeholder="Mod Lvl" />
+      <input type="number" id="helmEnhLvl" value="100" placeholder="Enh Lvl" class="enh-input"/>
+      <input type="number" id="helmModLvl" value="4" placeholder="Mod Lvl" class="enh-input"/>
   <br>
     <label>Cape:</label>
-      <select id="capeEnh">
+      <select id="capeEnh" class="enh-input">
         <option value="Lucky">Lucky</option>
         <option value="Wizard">Wizard</option>
         <option value="Forge">Forge</option>
@@ -89,8 +89,8 @@
         <option value="Spellbreaker">Spellbreaker</option>
         <option value="Hybrid">Hybrid</option>
       </select>
-      <input type="number" id="capeEnhLvl" value="100" placeholder="Enh Lvl" />
-      <input type="number" id="capeModLvl" value="4" placeholder="Mod Lvl" />
+      <input type="number" id="capeEnhLvl" value="100" placeholder="Enh Lvl" class="enh-input"/>
+      <input type="number" id="capeModLvl" value="4" placeholder="Mod Lvl" class="enh-input"/>
   <br><br>
   
   <!-- Display the dynamic result -->
@@ -216,20 +216,9 @@
     document.getElementById("level").addEventListener("input", updateStats);
     document.getElementById("classModel").addEventListener("change", updateStats);
     
-    document.getElementById("weaponEnh").addEventListener("change", updateStats);
-    document.getElementById("armorEnh").addEventListener("change", updateStats);
-    document.getElementById("helmEnh").addEventListener("change", updateStats);
-    document.getElementById("capeEnh").addEventListener("change", updateStats);
-
-    document.getElementById("weaponEnhLvl").addEventListener("change", updateStats);
-    document.getElementById("armorEnhLvl").addEventListener("change", updateStats);
-    document.getElementById("helmEnhLvl").addEventListener("change", updateStats);
-    document.getElementById("capeEnhLvl").addEventListener("change", updateStats);
-
-    document.getElementById("weaponModLvl").addEventListener("change", updateStats);
-    document.getElementById("armorModLvl").addEventListener("change", updateStats);
-    document.getElementById("helmModLvl").addEventListener("change", updateStats);
-    document.getElementById("capeModLvl").addEventListener("change", updateStats);
+    document.querySelectorAll('.enh-input').forEach(element => {
+      element.addEventListener('change', updateStats);
+    });
     
   </script>
 </body>
