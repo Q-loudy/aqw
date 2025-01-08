@@ -6,7 +6,7 @@
   <title>AQW Stat Calculator</title>
 </head>
 <body>
-  <h1>Stat Calculator21</h1>
+  <h1>Stat Calculator1</h1>
   
   <!-- Level Input -->
   <label for="level">Level</label>
@@ -186,7 +186,11 @@
       document.getElementById("showPrimaryStats").innerHTML = `
         <h3 style="color: red;">Primary Stats (Core Stats):</h3>
         <ul style="font-family: Arial, sans-serif;">
-          <li><strong>Strength:</strong> ${primaryStats.strength}</li>
+          <li>
+            <strong>Strength:</strong> ${primaryStats.strength} 
+            <input type="number" id="strengthInput" min="1" style="width: 50px;" />
+            <button onclick="increaseStat('strength')">Increase</button>
+          </li>
           <li><strong>Intellect:</strong> ${primaryStats.intellect}</li>
           <li><strong>Endurance:</strong> ${primaryStats.endurance}</li>
           <li><strong>Dexterity:</strong> ${primaryStats.dexterity}</li>
