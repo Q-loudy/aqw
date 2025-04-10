@@ -1,10 +1,10 @@
 // script.js
-let coins = 0;
+let coins = 100;
 let autoClickers = 0;
 let autoClickerCost = 10;
 
 let autoClickers2 = 0;
-let autoClicker2Cost = 100;
+let autoClicker2Cost = 50;
 
 const coinDisplay = document.getElementById("coinCount");
 const clickButton = document.getElementById("clickButton");
@@ -25,7 +25,7 @@ buyAutoClickerButton.addEventListener("click", () => {
   if (coins >= autoClickerCost) {
     coins -= autoClickerCost;
     autoClickers++;
-    autoClickerCost = Math.floor(autoClickerCost * 1.5);
+    autoClickerCost = Math.floor(autoClickerCost * 1.1);
     updateDisplay();
   }
 });
@@ -34,7 +34,7 @@ buyAutoClicker2Button.addEventListener("click", () => {
   if (coins >= autoClicker2Cost) {
     coins -= autoClicker2Cost;
     autoClickers2++;
-    autoClicker2Cost = Math.floor(autoClicker2Cost * 1.5);
+    autoClicker2Cost = Math.floor(autoClicker2Cost * 1.2);
     updateDisplay();
   }
 });
