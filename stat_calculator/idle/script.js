@@ -18,7 +18,7 @@ buyAutoClickerButton.addEventListener("click", () => {
   if (coins >= autoClickerCost) {
     coins -= autoClickerCost;
     autoClickers++;
-    autoClickerCost = Math.floor(autoClickerCost * 1.5);
+    autoClickerCost = Math.floor(autoClickerCost * 1.1);
     updateDisplay();
   }
 });
