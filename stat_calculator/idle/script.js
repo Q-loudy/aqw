@@ -55,8 +55,22 @@ buyAutoClicker3Button.addEventListener("click", () => {
   }
 });
 
+function formatNumber(num) {
+  if (num < 1000) return num.toString();
+
+  const units = ["K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc"];
+  let unitIndex = -1;
+
+  while (num >= 1000 && unitIndex < units.length - 1) {
+    num /= 1000;
+    unitIndex++;
+  }
+
+  return num.toFixed(2) + units[unitIndex];
+}
+
 function updateDisplay() {
-  coinDisplay.textContent = coins;
+  coinDisplay.textContent = formatNumber(coins);
   autoClickerCountDisplay.textContent = autoClickers;
   autoClickerCostDisplay.textContent = autoClickerCost;
   
