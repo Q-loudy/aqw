@@ -9,8 +9,10 @@ let autoClicker2Cost = 100;
 let autoClickers3 = 0;
 let autoClicker3Cost = 1000;
 
-let generator = 0;
+let generatorCount = 0;
 let generatorCost = 10000;
+let intervalTime = 1000; // starting interval time in ms
+let intervalId; // we'll use this to store the setInterval reference
 
 const coinDisplay = document.getElementById("coinCount");
 const clickButton = document.getElementById("clickButton");
@@ -65,8 +67,10 @@ buyAutoClicker3Button.addEventListener("click", () => {
 buyGeneratorButton.addEventListener("click", () => {
   if (coins >= generatorCost) {
     coins -= generatorCost;
-    generator++;
-    generator = Math.floor(generator * 1.5);
+    generatorCount++;
+    generatorCost = Math.floor(generatorCost * 1.5);
+    intervalTime = Math.max(100, intervalTime * 0.9); // don't go below 100ms
+    resetInterval();
     updateDisplay();
   }
 });
@@ -96,13 +100,23 @@ function updateDisplay() {
   autoClicker3CountDisplay.textContent = autoClickers3;
   autoClicker3CostDisplay.textContent = autoClicker3Cost;
   
-  generatorCountDisplay.textContent = generator;
-  generatorCostDisplay.textContent = generatorCost;
+  generatorCountDisplay.textContent = generatorCount;
+  generatorCostDisplay.textContent = formatNumber(generatorCost);
 }
 
-setInterval(() => {
-  coins += autoClickers;
-  autoClickers += autoClickers2;
-  autoClickers2 += autoClickers3;  
-  updateDisplay();
-}, interval);
+function startInterval() {
+  intervalId = setInterval(() => {
+    coins += autoClickers;
+    autoClickers += autoClickers2;
+    autoClickers2 += autoClickers3;  
+    updateDisplay();
+  }, intervalTime);
+}
+
+function resetInterval() {
+  clearInterval(intervalId);
+  startInterval();
+}
+
+// Start the initial interval
+startInterval();
