@@ -52,4 +52,4 @@ setInterval(() => {
   coins += autoClickers;
   coins += autoClickers2;  // Auto-clicker 2 generates additional coins
   updateDisplay();
-}, 1000);
+}, 100);
