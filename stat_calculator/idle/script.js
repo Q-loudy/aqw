@@ -9,6 +9,9 @@ let autoClicker2Cost = 100;
 let autoClickers3 = 0;
 let autoClicker3Cost = 1000;
 
+let generator = 0;
+let generatorCost = 10000;
+
 const coinDisplay = document.getElementById("coinCount");
 const clickButton = document.getElementById("clickButton");
 const buyAutoClickerButton = document.getElementById("buyAutoClicker");
@@ -22,6 +25,10 @@ const autoClicker2CostDisplay = document.getElementById("autoClicker2Cost");
 const buyAutoClicker3Button = document.getElementById("buyAutoClicker3");
 const autoClicker3CountDisplay = document.getElementById("autoClicker3Count");
 const autoClicker3CostDisplay = document.getElementById("autoClicker3Cost");
+
+const buyGeneratorButton = document.getElementById("buyGenerator");
+const generatorCountDisplay = document.getElementById("generatorCount");
+const generatorCostDisplay = document.getElementById("generatorCost");
 
 clickButton.addEventListener("click", () => {
   coins++;
@@ -55,6 +62,15 @@ buyAutoClicker3Button.addEventListener("click", () => {
   }
 });
 
+buyGeneratorButton.addEventListener("click", () => {
+  if (coins >= generatorCost) {
+    coins -= generatorCost;
+    generator++;
+    generator = Math.floor(generator * 1.5);
+    updateDisplay();
+  }
+});
+
 function formatNumber(num) {
   if (num < 1000) return num.toString();
 
@@ -79,6 +95,9 @@ function updateDisplay() {
   
   autoClicker3CountDisplay.textContent = autoClickers3;
   autoClicker3CostDisplay.textContent = autoClicker3Cost;
+  
+  generatorCountDisplay.textContent = generator;
+  generatorCostDisplay.textContent = generatorCost;
 }
 
 setInterval(() => {
@@ -86,4 +105,4 @@ setInterval(() => {
   autoClickers += autoClickers2;
   autoClickers2 += autoClickers3;  
   updateDisplay();
-}, 200);
+}, interval);
