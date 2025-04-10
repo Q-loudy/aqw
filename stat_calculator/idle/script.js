@@ -9,11 +9,6 @@ let autoClicker2Cost = 100;
 let autoClickers3 = 0;
 let autoClicker3Cost = 1000;
 
-let generatorCount = 0;
-let generatorCost = 10000;
-let intervalTime = 1000; // starting interval time in ms
-let intervalId; // we'll use this to store the setInterval reference
-
 const coinDisplay = document.getElementById("coinCount");
 const clickButton = document.getElementById("clickButton");
 const buyAutoClickerButton = document.getElementById("buyAutoClicker");
@@ -27,10 +22,6 @@ const autoClicker2CostDisplay = document.getElementById("autoClicker2Cost");
 const buyAutoClicker3Button = document.getElementById("buyAutoClicker3");
 const autoClicker3CountDisplay = document.getElementById("autoClicker3Count");
 const autoClicker3CostDisplay = document.getElementById("autoClicker3Cost");
-
-const buyGeneratorButton = document.getElementById("buyGenerator");
-const generatorCountDisplay = document.getElementById("generatorCount");
-const generatorCostDisplay = document.getElementById("generatorCost");
 
 clickButton.addEventListener("click", () => {
   coins++;
@@ -64,17 +55,6 @@ buyAutoClicker3Button.addEventListener("click", () => {
   }
 });
 
-buyGeneratorButton.addEventListener("click", () => {
-  if (coins >= generatorCost) {
-    coins -= generatorCost;
-    generatorCount++;
-    generatorCost = Math.floor(generatorCost * 1.5);
-    intervalTime = Math.max(100, intervalTime * 0.9); // don't go below 100ms
-    resetInterval();
-    updateDisplay();
-  }
-});
-
 function formatNumber(num) {
   if (num < 1000) return num.toString();
 
@@ -99,31 +79,11 @@ function updateDisplay() {
   
   autoClicker3CountDisplay.textContent = autoClickers3;
   autoClicker3CostDisplay.textContent = autoClicker3Cost;
-  
-  generatorCountDisplay.textContent = generatorCount;
-  generatorCostDisplay.textContent = formatNumber(generatorCost);
 }
 
-  intervalId = setInterval(() => {
-    coins += autoClickers;
-    autoClickers += autoClickers2;
-    autoClickers2 += autoClickers3;  
-    updateDisplay();
-  }, intervalTime);
-
-function startInterval() {
-  intervalId = setInterval(() => {
-    coins += autoClickers;
-    autoClickers += autoClickers2;
-    autoClickers2 += autoClickers3;  
-    updateDisplay();
-  }, intervalTime);
-}
-
-function resetInterval() {
-  clearInterval(intervalId);
-  startInterval();
-}
-
-// Start the initial interval
-startInterval();
+setInterval(() => {
+  coins += autoClickers;
+  autoClickers += autoClickers2;
+  autoClickers2 += autoClickers3;  
+  updateDisplay();
+}, 200);
