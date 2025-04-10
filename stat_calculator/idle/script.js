@@ -86,4 +86,4 @@ setInterval(() => {
   autoClickers += autoClickers2;
   autoClickers2 += autoClickers3;  
   updateDisplay();
-}, 500);
+}, 200);
