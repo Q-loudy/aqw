@@ -104,6 +104,13 @@ function updateDisplay() {
   generatorCostDisplay.textContent = formatNumber(generatorCost);
 }
 
+  intervalId = setInterval(() => {
+    coins += autoClickers;
+    autoClickers += autoClickers2;
+    autoClickers2 += autoClickers3;  
+    updateDisplay();
+  }, intervalTime);
+
 function startInterval() {
   intervalId = setInterval(() => {
     coins += autoClickers;
